@@ -1,1 +1,6 @@
-hello boi 
+hello boi node put-files.js --token=<YOUR_TOKEN> ~/filename1 ~/filename2 ~/filenameN
+node put-files.js --token=<YOUR_TOKEN> ~/filename1 ~/filename2 ~/filenameN
+
+
+
+node put-files.js --token=<YOUR_TOKEN> ~~/filename1 ~/filename2 ~/filenameN

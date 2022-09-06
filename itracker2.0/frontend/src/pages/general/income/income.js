@@ -1,10 +1,98 @@
 import React from "react";
+//import "../income/income.css";
+import txtfileconversion from '../../../logic/txtfileconversion'
 const Income = () => {
-    return (
-      <div>
-        <h1>welcome to Income page </h1>
-      </div>
-    );
+  const [formData, updateFormData] = React.useState(initialFormData);
+
+  const handleChange = (e) => {
+    updateFormData({
+      ...formData,
+
+      // Trimming any whitespace
+      [e.target.name]: e.target.value.trim(),
+    });
   };
-  export default Income;
-  
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(formData);
+    console.log('testing');
+    console.log(formData.uname.toString)
+    txtfileconversion(formData)
+    // ... submit to API / txtfileconvert
+  };
+  return (
+    <div>
+      <div>
+        {/* NAVBAR */}
+        <div>
+          {/* className={styles.Navbar}*/}
+          {/*<ANavbar BurgerColour={"whitesmoke"} /> */}
+        </div>
+
+        <div className="form">
+          <form>
+            <h1 className="logincss">Invest Data</h1>
+            <div className="input-container">
+              <label className="labeltxt">Title </label>
+              <input
+                type="text"
+                name="uname"
+                onChange={handleChange}
+                required
+              />
+            </div>
+
+            <div className="input-container">
+              <label>Date </label>
+              <input
+                type="text"
+                name="idate"
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <div className="input-container">
+              <label>Total Amount </label>
+              <input
+                type="text"
+                name="iamount"
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <div className="input-container">
+              <label>Remarks </label>
+              <input
+                type="text"
+                name="iremarks"
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <div className="button-container">
+              <input onClick= {handleSubmit
+              } type="submit" />
+            </div>
+            
+          </form>
+        </div>
+      </div>
+    </div>
+  );
+};
+export default Income;
+
+const initialFormData = Object.freeze({
+  uname: "",
+  idate: "",
+  iamount: "",
+  iremarks: "",
+});
+
+
+
+
+
+
+//https://linguinecode.com/post/how-to-get-form-data-on-submit-in-reactjs
