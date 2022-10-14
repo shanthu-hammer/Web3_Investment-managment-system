@@ -1,0 +1,133 @@
+.apps {
+    font-family: sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 20px;
+    height: 100vh;
+    font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+    background-color: #04090e;
+}
+
+
+input[type="text"],
+input[type="password"] {
+    height: 35px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+}
+
+
+body {
+    background: #ffffff !important;
+    align-items: center;
+    font-weight: 400;
+    font-family: 'Fira Sans', sans-serif;
+}
+
+input[type="submit"] {
+    margin-top: 10px;
+    cursor: pointer;
+    font-size: 15px;
+    background: #01d28e;
+    border: 1px solid #01d28e;
+    color: #fff;
+    padding: 10px 80px;
+    border-radius: 25px;
+
+}
+
+input[type="submit"]:hover {
+    background: #6cf0c2;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+}
+
+.login-form {
+    background-color: white;
+    padding: 2rem;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.list-container {
+    display: flex;
+}
+
+.error {
+    color: red;
+    font-size: 12px;
+}
+
+.title {
+    font-size: 25px;
+    margin-bottom: 20px;
+}
+
+.input-container {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin: 20px;
+    width: 40vh;
+
+}
+
+.labeltxt {
+    font-weight: 500;
+    font-family: 'Fira Sans', sans-serif;
+
+
+
+
+
+}
+
+.form {
+
+
+
+
+    margin: auto;
+
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 450px;
+    height: 500px;
+    margin: auto;
+    background: #e0e0e0f1;
+    box-shadow: 0px 14px 80px rgba(34, 35, 58, 0.2);
+    padding: 40px 55px 45px 55px;
+    border-radius: 15px;
+    transition: all .3s;
+
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+
+
+
+
+
+
+
+
+}
+
+.logincss {
+    text-align: center;
+    padding: 20px;
+    font-family: sans-serif;
+
+
+
+}

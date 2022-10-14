@@ -22,7 +22,7 @@ const Invest = () => {
     updateFormData({
       ...formData,
 
-      // Trimming any whitespace
+      // .trim Trimming any whitespace
       [e.target.name]: e.target.value.trim(),
     });
   };
@@ -91,7 +91,7 @@ const Invest = () => {
     </div>
   );
 };
-export default Invest;
+export default Invest; 
 const initialFormData = Object.freeze({
   uname: "",
   idate: "",
