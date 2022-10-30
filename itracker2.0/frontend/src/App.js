@@ -9,7 +9,7 @@ import Dashboard from "../src/pages/general/dashboard/dashboard";
 import Income from "../src/pages/general/income/income";
 import Invest from "../src/pages/general/Invest/invest";
 import Manipulation from "../src/pages/general/manipulation/manipulation";
-
+//import Egg from "../src/logic/testing"; <Route path="/testing" element={<Egg />} />
 //import downloadTxtFile from "../../logic/txtfileconversion/downloadTxtFile";
 import txtFileConversion from "../src/logic/txtfileconversion";
 
@@ -24,7 +24,7 @@ function App() {
         <Route path="/income" element={<Income />} />
         <Route path="/invest" element={<Invest />} />
         <Route path="/manipulation" element={<Manipulation />} />
-
+       
         <Route path="/d" element={<txtFileConversion />} />
       </Routes>
     </div>

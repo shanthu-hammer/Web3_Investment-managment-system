@@ -1,43 +1,34 @@
-import React from "react";
-import "../Invest/invest.css";
-import "../manipulation/manipulation.css";
-import '../../../logic/differgenerator'
+//input page for fetching the 2 files from the user 
 
-//accept file from users
-//send files to comparision class
-const Manipulation = () => {
-  const Handlecheck = (e) => {
-    
-    // e.preventDefault();
-    //console.log(formData);
-    // console.log(formData.iamount);
-    // ... submit to API or something
+import React, { Component } from "react";
+
+//import ReactFileReader from "react-file-reader";
+class Manipulation extends Component {
+  constructor(props) {
+    super(props);
+  }
+
+  showFile = async (e) => {
+    e.preventDefault();
+    const reader = new FileReader();
+    reader.onload = async (e) => {
+      const text = e.target.result;
+      console.log(text);
+      alert(text);
+    };
+    reader.readAsText(e.target.files[0]);
   };
-  return (
-    <div>
-      {/* NAVBAR */}
-      <div>
-        {/* className={styles.Navbar}*/}
-        {/*<ANavbar BurgerColour={"whitesmoke"} /> */}
-      </div>
 
-      <div className="form">
-        <form>
-          <h1 className="logincss">Difference Generator </h1>
-          <div className="input-container">
-            <label className="labeltxt">Username </label>
-            <input type="text" name="uname" required />
-          </div>
-          <div className="input-container">
-            <label>Password </label>
-            <input type="password" name="pass" required />
-          </div>
-          <div className="button-container">
-            <input onClick={Handlecheck} type="submit" />
-          </div>
-        </form>
+  render = () => {
+    return (
+      <div>
+        <input type="file" onChange={(e) => this.showFile(e)} />
+
+        <input type="file" onChange={(e) => this.showFile(e)} />
+
       </div>
-    </div>
-  );
-};
- export default Manipulation;
+    );
+  };
+}
+
+export default Manipulation;

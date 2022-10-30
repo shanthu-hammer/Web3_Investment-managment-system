@@ -1,3 +1,5 @@
+//convert the data obtained from users into a txt file 
+
 import React from "react";
 //const blob = new Blob([fileData], { type: "text/plain" });
 //const url = URL.createObjectURL(blob);
