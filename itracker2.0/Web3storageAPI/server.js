@@ -5,12 +5,11 @@ import { Blob } from "buffer";
 import { getFilesFromPath } from "web3.storage";
 import { File } from "web3.storage";
 import { CarReader } from "@ipld/car";
-//import "./temp/generatedfiles";
-/*list of end points
 
+/*list of end points
+GET filedata method endpoint: http://localhost:7000/filedata/bafybeiacs6qaawbgrwq26zzno2lpoor3nzzmjyo5b4f2ejbjfdp5n2of74/file3.json
+POST method endpoint: http://localhost:7000/uploadfile/file3.json
 */
-//const Web3Storage = require("web3.storage");
-//let data;
 
 const myport = 7000;
 const app = express();
@@ -21,7 +20,7 @@ app.listen(myport, () => {
 });
 
 //get File content endpoint
-//http://localhost:7000/filedata/bafybeiae2kagsijzksff3mllklvtrlsid2nfg4lwfnvb7dvc4h6jvuk4te/check.js
+
 
 app.get("/filedata/:id/:fname", async (req, res) => {
   console.dir("The cid sent is " + req.params.id);
@@ -65,9 +64,7 @@ function makeStorageClient() {
   return new Web3Storage({ token: getAccessToken() });
 }
 
-//retrieve file
-//https://web3.storage/docs/how-tos/retrieve/#using-the-client-libraries
-//https://web3.storage/docs/how-tos/store/
+//retrieve file related info 
 async function retrieve(cid) {
   const client = makeStorageClient();
   console.log("reached retrieve");
@@ -93,8 +90,7 @@ async function retrieve(cid) {
 async function fetchFileData(cid, filename) {
   console.log("triggered fetchFileData cid received is " + cid);
   let url = "https://" + cid + ".ipfs.w3s.link/" + filename;
-  //let url =    "https://bafybeiae2kagsijzksff3mllklvtrlsid2nfg4lwfnvb7dvc4h6jvuk4te.ipfs.w3s.link/check.js";
-  //"https://bafybeiae2kagsijzksff3mllklvtrlsid2nfg4lwfnvb7dvc4h6jvuk4te.ipfs.w3s.link/check.js";
+ 
   try {
     let res = await fetch(url).then((x) => x.text());
     return await res;
