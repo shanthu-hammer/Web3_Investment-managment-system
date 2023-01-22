@@ -1,11 +1,13 @@
 import express from "express";
 import { Web3Storage } from "web3.storage";
 import fetch from "node-fetch";
-console.log("serverjs");
+import { Blob } from "buffer";
+import { getFilesFromPath } from "web3.storage";
+import { File } from "web3.storage";
+import { CarReader } from "@ipld/car";
 /*list of end points
 
-http://localhost:7000/getone/bafybeieibxjdvuc7pddmu6qjbl4pmpdtgycvnagdi6yhby2rpkypcpbukm
-http://localhost:7000/filedata/bafybeieibxjdvuc7pddmu6qjbl4pmpdtgycvnagdi6yhby2rpkypcpbukm
+
 */
 //const Web3Storage = require("web3.storage");
 //let data;
@@ -19,11 +21,21 @@ app.listen(myport, () => {
 });
 
 //get File content endpoint
+//http://localhost:7000/filedata/bafybeiae2kagsijzksff3mllklvtrlsid2nfg4lwfnvb7dvc4h6jvuk4te/check.js
+
 app.get("/filedata/:id/:fname", async (req, res) => {
   console.dir("The cid sent is " + req.params.id);
   let fileData = await fetchFileData(req.params.id, req.params.fname);
 
   res.send(fileData);
+});
+
+//Post End point
+app.post("/uploadfile", async (req, res) => {
+  //storeFiles();
+  let file = await makeFileObjects();
+  let storefunction = await storeWithProgress(file);
+  res.send(storefunction);
 });
 
 //Get End point
@@ -33,12 +45,6 @@ app.get("/getone/:id", async (req, res) => {
   //console.dir(id);
   let retrieveData = await retrieve(req.params.id);
   res.send(retrieveData);
-});
-
-//Post End point
-app.post("", (req, res) => {
-  res.send("request to post ");
-  storeFiles();
 });
 
 //Functions for Token part
@@ -82,18 +88,12 @@ async function retrieve(cid) {
   // request succeeded! do something with the response object here...
 }
 
+//Fetching Files data Function
 async function fetchFileData(cid, filename) {
   console.log("triggered fetchFileData cid received is " + cid);
-  //url manipulation
-  /*
-
-"https://"+ cid +".ipfs.w3s.link/"+check.js
-"https://"+ cid +".ipfs.w3s.link/"+filename
-
-
-  */
   let url = "https://" + cid + ".ipfs.w3s.link/" + filename;
   //let url =    "https://bafybeiae2kagsijzksff3mllklvtrlsid2nfg4lwfnvb7dvc4h6jvuk4te.ipfs.w3s.link/check.js";
+  //"https://bafybeiae2kagsijzksff3mllklvtrlsid2nfg4lwfnvb7dvc4h6jvuk4te.ipfs.w3s.link/check.js";
   try {
     let res = await fetch(url).then((x) => x.text());
     return await res;
@@ -101,4 +101,59 @@ async function fetchFileData(cid, filename) {
   } catch (error) {
     console.log(error);
   }
+}
+
+//Storing files Function
+async function storeWithProgress(files) {
+  // show the root cid as soon as it's ready
+  const onRootCidReady = (cid) => {
+    console.log("uploading files with cid:", cid);
+  };
+
+  // when each chunk is stored, update the percentage complete and display
+  const totalSize = files.map((f) => f.size).reduce((a, b) => a + b, 0);
+  let uploaded = 0;
+
+  const onStoredChunk = (size) => {
+    uploaded += size;
+    const pct = 100 * (uploaded / totalSize);
+    console.log(`Uploading... ${pct.toFixed(2)}% complete`);
+  };
+
+  // makeStorageClient returns an authorized web3.storage client instance
+  const client = makeStorageClient();
+
+  // client.put will invoke our callbacks during the upload
+  // and return the root cid when the upload completes
+  console.log("files from storewithprogress " + files);
+
+  return client.put(files, { onRootCidReady, onStoredChunk });
+}
+
+//method 1 Generating a file
+async function getFiles(path) {
+  const files = await getFilesFromPath(path);
+  console.log(`read ${files.length} file(s) from ${path}`);
+  return files;
+}
+
+//method 2 Generating a file
+function makeFileObjects() {
+  // You can create File objects from a Buffer of binary data
+  // see: https://nodejs.org/api/buffer.html
+  // Here we're just storing a JSON object, but you can store images,
+  // audio, or whatever you want!
+  const obj = {
+    _name: "sample.json",
+    _lastModified: 1674147321609,
+    cid: "bafkreihdwdcefgh4dqkjv67uzcmw7ojee6xedzdetojuzjevtenxquvyku",
+  };
+  const buffer = Buffer.from(JSON.stringify(obj));
+
+  const files = [
+    new File(["contents-of-file-1"], "plain-utf8.txt"),
+    new File([buffer], "file3.json"),
+  ];
+  console.log("the content in files are " + files);
+  return files;
 }
