@@ -5,8 +5,8 @@ import { Blob } from "buffer";
 import { getFilesFromPath } from "web3.storage";
 import { File } from "web3.storage";
 import { CarReader } from "@ipld/car";
+//import "./temp/generatedfiles";
 /*list of end points
-
 
 */
 //const Web3Storage = require("web3.storage");
@@ -31,9 +31,10 @@ app.get("/filedata/:id/:fname", async (req, res) => {
 });
 
 //Post End point
-app.post("/uploadfile", async (req, res) => {
+app.post("/uploadfile/:fpath", async (req, res) => {
   //storeFiles();
-  let file = await makeFileObjects();
+  let filepath = "./temp/generatedfiles/" + req.params.fpath;
+  let file = await getFiles(filepath);
   let storefunction = await storeWithProgress(file);
   res.send(storefunction);
 });
