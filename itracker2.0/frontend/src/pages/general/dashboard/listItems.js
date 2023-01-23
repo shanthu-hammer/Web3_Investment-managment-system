@@ -9,8 +9,7 @@ import PeopleIcon from "@mui/icons-material/People";
 import BarChartIcon from "@mui/icons-material/BarChart";
 import LayersIcon from "@mui/icons-material/Layers";
 import AssignmentIcon from "@mui/icons-material/Assignment";
-import Income from "../income/income";
-import { useNavigate } from "react-router-dom";
+
 export const mainListItems = (
   <React.Fragment>
     <ListItemButton>
@@ -19,25 +18,23 @@ export const mainListItems = (
       </ListItemIcon>
       <ListItemText primary="Dashboard" />
     </ListItemButton>
-    <ListItemButton onClick={<Income />}>
-      <ListItemIcon >
-        <LayersIcon />
-      </ListItemIcon>
-      <ListItemText primary="Income" />
-    </ListItemButton>
-    <ListItemButton >
-      <ListItemIcon>
-        <LayersIcon />
-      </ListItemIcon>
-      <ListItemText primary="Invest" />
-    </ListItemButton>
+    <a href="http://localhost:3000/income">
+      <ListItemButton>
+        <ListItemIcon>
+          <ShoppingCartIcon />
+        </ListItemIcon>
+        <ListItemText primary="Income" />
+      </ListItemButton>
+    </a>
+    <a href="http://localhost:3000/invest">
+      <ListItemButton>
+        <ListItemIcon>
+          <ShoppingCartIcon />
+        </ListItemIcon>
+        <ListItemText primary="Invest" />
+      </ListItemButton>
+    </a>
     <ListItemButton>
-      <ListItemIcon>
-        <ShoppingCartIcon />
-      </ListItemIcon>
-      <ListItemText primary="Income" />
-    </ListItemButton>
-    {/* <ListItemButton>
       <ListItemIcon>
         <PeopleIcon />
       </ListItemIcon>
@@ -54,7 +51,7 @@ export const mainListItems = (
         <LayersIcon />
       </ListItemIcon>
       <ListItemText primary="Integrations" />
-    </ListItemButton> */}
+    </ListItemButton>
   </React.Fragment>
 );
 
