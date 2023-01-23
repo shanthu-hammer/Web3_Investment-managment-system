@@ -5,7 +5,7 @@ import "./App.css";
 import Home from "../src/pages/general/home/home";
 import Login from "../src/pages/authentication/login/login";
 import Signup from "../src/pages/authentication/signup/signup";
-import Dashboard from "../src/pages/general/dashboard/dashboard";
+import Dashboard from "../src/pages/general/dashboard/Dashboard";
 import Income from "../src/pages/general/income/income";
 import Invest from "../src/pages/general/Invest/invest";
 import Manipulation from "../src/pages/general/manipulation/manipulation";
