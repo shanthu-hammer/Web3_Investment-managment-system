@@ -21,7 +21,7 @@ export const mainListItems = (
     <a href="http://localhost:3000/income">
       <ListItemButton>
         <ListItemIcon>
-          <ShoppingCartIcon />
+        <LayersIcon />
         </ListItemIcon>
         <ListItemText primary="Income" />
       </ListItemButton>
@@ -29,29 +29,20 @@ export const mainListItems = (
     <a href="http://localhost:3000/invest">
       <ListItemButton>
         <ListItemIcon>
-          <ShoppingCartIcon />
+        <LayersIcon />
         </ListItemIcon>
         <ListItemText primary="Invest" />
       </ListItemButton>
     </a>
-    <ListItemButton>
-      <ListItemIcon>
-        <PeopleIcon />
-      </ListItemIcon>
-      <ListItemText primary="Customers" />
-    </ListItemButton>
-    <ListItemButton>
-      <ListItemIcon>
-        <BarChartIcon />
-      </ListItemIcon>
-      <ListItemText primary="Reports" />
-    </ListItemButton>
-    <ListItemButton>
-      <ListItemIcon>
+    <a href="http://localhost:3000/manipulation">
+      <ListItemButton>
+        <ListItemIcon>
         <LayersIcon />
-      </ListItemIcon>
-      <ListItemText primary="Integrations" />
-    </ListItemButton>
+        </ListItemIcon>
+        <ListItemText primary="Tamper" />
+      </ListItemButton>
+    </a>
+    
   </React.Fragment>
 );
 

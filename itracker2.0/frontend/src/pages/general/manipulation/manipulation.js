@@ -7,6 +7,19 @@ class Manipulation extends Component {
   constructor(props) {
     super(props);
   }
+  fetchdcndata = async (e) => {
+    try {
+      let dcnfile = await fetch(
+        "https://bafybeiacs6qaawbgrwq26zzno2lpoor3nzzmjyo5b4f2ejbjfdp5n2of74.ipfs.w3s.link/file3.json"
+      ).then((x) => x.text());
+
+      console.log(dcnfile);
+      alert(dcnfile);
+      return await dcnfile;
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   showFile = async (e) => {
     e.preventDefault();
@@ -25,7 +38,9 @@ class Manipulation extends Component {
         <input type="file" onChange={(e) => this.showFile(e)} />
 
         <input type="file" onChange={(e) => this.showFile(e)} />
-
+        <div className="button-container">
+          <input onClick={(e) => this.fetchdcndata(e)} type="submit" />
+        </div>
       </div>
     );
   };

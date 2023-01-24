@@ -12,6 +12,7 @@ import Manipulation from "../src/pages/general/manipulation/manipulation";
 //import Egg from "../src/logic/testing"; <Route path="/testing" element={<Egg />} />
 //import downloadTxtFile from "../../logic/txtfileconversion/downloadTxtFile";
 import txtFileConversion from "../src/logic/txtfileconversion";
+//import Manipulation from "../src/pages/general/manipulation/manipulation"
 
 function App() {
   return (
