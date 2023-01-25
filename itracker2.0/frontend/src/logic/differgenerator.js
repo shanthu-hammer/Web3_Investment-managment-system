@@ -7,9 +7,13 @@ const differenceGenerator =( file_str1,file_str2  )=>{
     var result ; 
     if (file_str1 == file_str2)
     {
-        //var result = 
+         result = "File Validated successfully "
+    }
+    else {
+         result = "File has been manipulated"
     }
 
+    return result 
     // var fr=new FileReader();
     // fr.onload=function(){
     //     //document.getElementById('output')
@@ -40,7 +44,7 @@ const differenceGenerator =( file_str1,file_str2  )=>{
     
 
 
-export default differenceGenerator();
+//export default differenceGenerator();
 
 
 
