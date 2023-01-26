@@ -23,7 +23,7 @@ app.listen(myport, () => {
 
 
 app.get("/filedata/:id/:fname", async (req, res) => {
-  console.dir("The cid sent is " + req.params.id);
+  //console.dir("The cid sent is " + req.params.id);
   let fileData = await fetchFileData(req.params.id, req.params.fname);
 
   res.send(fileData);

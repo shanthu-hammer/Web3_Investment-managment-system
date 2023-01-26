@@ -30,9 +30,25 @@ class Manipulation extends Component {
   //file from web3
   fetchdcndata = async (e) => {
     try {
+      var requestOptions = {
+        method: "GET",
+        redirect: "follow",
+      };
+
+      // let dcnfile = await fetch(
+      //   "http://localhost:7000/filedata/bafybeiacs6qaawbgrwq26zzno2lpoor3nzzmjyo5b4f2ejbjfdp5n2of74/file3.json",
+      //   requestOptions
+      // )
+      //   .then((response) => response.text())
+      //   .then((result) => console.log(result))
+      //   .catch((error) => console.log("error", error));
+      // bafybeiacs6qaawbgrwq26zzno2lpoor3nzzmjyo5b4f2ejbjfdp5n2of74.ipfs.w3s
+      //   .link / file3.json;
       let dcnfile = await fetch(
-        "https://bafybeiacs6qaawbgrwq26zzno2lpoor3nzzmjyo5b4f2ejbjfdp5n2of74.ipfs.w3s.link/file3.json"
+        "http://localhost:7000/filedata/bafybeiacs6qaawbgrwq26zzno2lpoor3nzzmjyo5b4f2ejbjfdp5n2of74/file3.json",
+        requestOptions
       ).then((x) => x.text());
+        
 
       // console.log(dcnfile);
       this.file2 = dcnfile;
