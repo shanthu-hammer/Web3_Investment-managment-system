@@ -2,6 +2,7 @@
 import { Button, Alert, AlertTitle } from "@mui/material";
 import React, { Component, useState } from "react";
 import "../manipulation/manipulation.css";
+import DropDown from "./dropdown";
 //import differenceGenerator from "../../../logic/differgenerator";
 //import ReactFileReader from "react-file-reader";
 class Manipulation extends Component {
@@ -48,7 +49,6 @@ class Manipulation extends Component {
         "http://localhost:7000/filedata/bafybeiacs6qaawbgrwq26zzno2lpoor3nzzmjyo5b4f2ejbjfdp5n2of74/file3.json",
         requestOptions
       ).then((x) => x.text());
-        
 
       // console.log(dcnfile);
       this.file2 = dcnfile;
@@ -83,6 +83,7 @@ class Manipulation extends Component {
         >
           Fetch Orginal
         </button>
+        <DropDown />
 
         <br />
         <br />
@@ -102,14 +103,14 @@ class Manipulation extends Component {
 }
 
 export default Manipulation;
-const differenceGenerator =( file_str1,file_str2  )=>{
-  var result ; 
-  if (file_str1 == file_str2)
-  {
-       result = "File Validated successfully "
-  }
-  else {
-       result = "File has been manipulated"
+const differenceGenerator = (file_str1, file_str2) => {
+  var result = "no files selected";
+  
+  if (file_str1 == file_str2) {
+    result = "File Validated successfully ";
+  } else {
+    result = "File has been manipulated";
   }
 
-  return result }
+  return result;
+};
