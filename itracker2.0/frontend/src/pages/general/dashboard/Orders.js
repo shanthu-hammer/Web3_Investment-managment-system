@@ -12,6 +12,7 @@ function createData(id, date, name, shipTo, paymentMethod, amount) {
   return { id, date, name, shipTo, paymentMethod, amount };
 }
 
+
 //--------------------------
 //  const [data, setData] = useState([]);
 //   //const navigate = useNavigate();
@@ -36,6 +37,8 @@ function createData(id, date, name, shipTo, paymentMethod, amount) {
 //     fetchData();
 //   }, []);
 //--------------------------
+
+//let dataa= actualdata.data
 
 var requestOptions = {
   method: "GET",
@@ -103,7 +106,23 @@ function preventDefault(event) {
 }
 
 export default function Orders() {
-  
+  const [data, setData] = useState([]);
+  const fetchData = () => {
+    fetch(`http://localhost:1337/api/fileinfos`)
+      .then((response) => response.json())
+      .then((actualData) => {
+        console.log(actualData.data);
+        setData(actualData.data);
+        // console.log(data);
+      })
+      .catch((err) => {
+        console.log(err.message);
+      });
+  };
+  useEffect(() => {
+    fetchData();
+  }, []);
+
 
   
   return (
@@ -120,12 +139,12 @@ export default function Orders() {
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map((row) => (
-            <TableRow >
-              <TableCell>{rows?.fileID}</TableCell>
-              <TableCell>{rows?.cid}</TableCell>
-              <TableCell>{rows?.name}</TableCell>
-              <TableCell>{rows?.type}</TableCell>
+          {data.map((item, index) => (
+            <TableRow>
+              <TableCell>{item.attributes.fileID}</TableCell>
+              <TableCell>{item.attributes.cid}</TableCell>
+              <TableCell>{item.attributes.name}</TableCell>
+              <TableCell>{item.attributes.type}</TableCell>
               {/* <TableCell>{row.paymentMethod}</TableCell> */}
               {/* <TableCell align="right">{`$${row.amount}`}</TableCell> */}
             </TableRow>
