@@ -25,7 +25,7 @@ function App() {
         <Route path="/income" element={<Income />} />
         <Route path="/invest" element={<Invest />} />
         <Route path="/manipulation" element={<Manipulation />} />
-
+       
         <Route path="/d" element={<txtFileConversion />} />
       </Routes>
     </div>

@@ -103,6 +103,21 @@ input[type="reset"]:hover {
 
 }
 
+.button-custom {
+    margin-top: 20px;
+    cursor: pointer;
+    font-size: 15px;
+    background: #3577f0;
+    border: 1px solid #3577f0;
+    color: #fff;
+    padding: 10px 60px;
+    border-radius: 2px;
+    display: flex;
+    justify-content: center;
+    height: 35px;
+
+
+}
 .form {
 
 

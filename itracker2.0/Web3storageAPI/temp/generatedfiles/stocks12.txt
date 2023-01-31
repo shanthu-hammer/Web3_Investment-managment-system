@@ -1,0 +1,1 @@
+{"uname":"stocks12","idate":"12/10/2022","iamount":"1000","iremarks":"good"}

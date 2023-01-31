@@ -1,0 +1,1 @@
+{"uname":"rental","idate":"10.12.2023","iamount":"2000","iremarks":"good"}

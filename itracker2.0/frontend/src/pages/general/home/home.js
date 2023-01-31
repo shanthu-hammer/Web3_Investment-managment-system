@@ -4,53 +4,59 @@ import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Loading from "./loading";
 import Tabledata from './table';
+import UpdateStrapi from "../../../logic/updateStrapi";
+import UploadFile from "../../../logic/uploadfile";
+const Home = () => {
+  // const [data, setData] = useState([]);
 
-const Home=()=>{
+  // const fetchData = () => {
+  //   fetch(`http://localhost:1337/api/fileinfos`)
+  //     .then((response) => response.json())
+  //     .then((actualData) => {
+  //       console.log(actualData.data);
+  //       setData(actualData.data);//setData(actualData.data.data);
+  //      // console.log(data);
+  //     })
+  //     .catch((err) => {
+  //       console.log(err.message);
+  //     });
+  // };
 
-  const [data, setData] = useState([]);
-
-  const fetchData = () => {
-    fetch(`http://localhost:1337/api/fileinfos`)
-      .then((response) => response.json())
-      .then((actualData) => {
-        console.log(actualData.data);
-        setData(actualData.data);//setData(actualData.data.data);
-       // console.log(data);
-      })
-      .catch((err) => {
-        console.log(err.message);
-      });
+  // useEffect(() => {
+  //   fetchData();
+  // }, []);
+  const handleSubmit = () => {
+    alert("clicked ");
   };
-
-  useEffect(() => {
-    fetchData();
-  }, []);
-
+  const handleclick = async () => {
+    //let val = await UploadFile("obj");
+    UpdateStrapi("investment", "rental16");
+   // console.log("you have clicken me " + val);
+     console.log('testing from home ');
+  };
   return (
     <div className="App">
       <tbody>
+        <br /> <button onClick={handleclick}>click me to check </button>
+        <br />
+        <br />
+        <div className="button-container">
+          <input onClick={handleSubmit} type="submit" />
+        </div>
+        {/* {data.map((item, index) => ( */}
         <tr>
-          <th>Name</th>
-          <th>Brand</th>
-          <th>Image</th>
-          <th>Price</th>
-          <th>Rating</th>
-        </tr>
-       
-        {data.map((item, index) => (
-          <tr key={index}>
-             {/* {console.log(item.attributes)} */}
-            <td>{item.attributes.fileID}</td>
+          {/* {console.log(item.attributes)} */}
+          {/* <td>{item.attributes.fileID}</td>
             <td>{item.attributes.cid}</td>
            
             <td>{item.attributes.name}</td>
-            <td>{item.attributes.type}</td>
-          </tr>
-        ))}
+            <td>{item.attributes.type}</td> */}
+        </tr>
+        {/* ))} */}
       </tbody>
     </div>
   );
-}
+};
 
 const Home1 = () => {
   let mydata = [

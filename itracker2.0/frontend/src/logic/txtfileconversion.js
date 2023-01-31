@@ -11,12 +11,14 @@ import React from "react";
 //   iremarks: "",
 // };
 
-const txtFileConversion = (userInfo) => {
+const txtFileConversion = (userInfo,fname) => {
+  console.log('from txt file conversion '+userInfo)
   const fileData = JSON.stringify(userInfo);
   const blob = new Blob([fileData], { type: "text/plain" });
   const url = URL.createObjectURL(blob);
   const link = document.createElement("a");
-  link.download = "obj.txt";
+  console.log('from txt filepost conversion '+userInfo)
+  link.download = fname+".txt";
   link.href = url;
   //location.href = '';
   link.click();

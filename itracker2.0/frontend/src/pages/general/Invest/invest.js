@@ -1,5 +1,7 @@
 import React from "react";
 import "../Invest/invest.css";
+import txtfileconversion from "../../../logic/txtfileconversion";
+import UpdateStrapi from "../../../logic/updateStrapi";
 //import "../../../logic/txtfileconversion/TxtFileConversion.js"
 //invest
 //name, total amount, remarks, select date
@@ -22,7 +24,7 @@ const Invest = () => {
     updateFormData({
       ...formData,
 
-      // .trim Trimming any whitespace
+      // Trimming any whitespace
       [e.target.name]: e.target.value.trim(),
     });
   };
@@ -30,8 +32,16 @@ const Invest = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(formData);
-    console.log(formData.iamount);
-    // ... submit to API or something
+    console.log("testing");
+    console.log(formData.uname);
+    txtfileconversion(formData, formData.uname);
+    //strapiupdate:update data to
+    // ... submit to API / txtfileconvert
+  };
+
+  const fetchdcndata = async (e) => {
+    e.preventDefault();
+     await UpdateStrapi('invest',formData.uname)
   };
   return (
     <div>
@@ -85,6 +95,9 @@ const Invest = () => {
             <div className="button-container">
               <input onClick={handleSubmit} type="submit" />
             </div>
+            <button className="custom-button" onClick={fetchdcndata}>
+              Fetch Orginal
+            </button>
           </form>
         </div>
       </div>

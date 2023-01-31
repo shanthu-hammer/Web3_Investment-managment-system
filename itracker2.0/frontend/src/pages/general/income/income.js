@@ -1,6 +1,7 @@
 import React from "react";
 //import "../income/income.css";
 import txtfileconversion from '../../../logic/txtfileconversion'
+import UpdateStrapi from '../../../logic/updateStrapi'
 const Income = () => {
   const [formData, updateFormData] = React.useState(initialFormData);
 
@@ -16,11 +17,18 @@ const Income = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(formData);
-    console.log('testing');
-    console.log(formData.uname.toString)
-    txtfileconversion(formData)
+    console.log("testing");
+    console.log(formData.uname.toString);
+    txtfileconversion(formData, formData.uname);
+    //strapiupdate:update data to
     // ... submit to API / txtfileconvert
   };
+
+  const fetchdcndata =async(e)=>{
+    e.preventDefault();
+    await UpdateStrapi('income',formData.uname)
+  }
+
   return (
     <div>
       <div>
@@ -74,6 +82,13 @@ const Income = () => {
               <input onClick= {handleSubmit
               } type="submit" />
             </div>
+            <button
+          className="custom-button"
+          onClick={fetchdcndata
+          }
+        >
+          Fetch Orginal
+        </button>
             
           </form>
         </div>
