@@ -30,7 +30,7 @@ input[type="submit"] {
     margin-top: 10px;
     cursor: pointer;
     font-size: 15px;
-    background: #01d28e;
+    background: #37eb1b;
     border: 1px solid #01d28e;
     color: #fff;
     padding: 10px 80px;
@@ -102,30 +102,24 @@ input[type="reset"]:hover {
 
 
 }
-
-.button-custom {
+/* 
+  .custom-button {
     margin-top: 20px;
     cursor: pointer;
     font-size: 15px;
-    background: #3577f0;
+    background: #f08935;
     border: 1px solid #3577f0;
     color: #fff;
     padding: 10px 60px;
     border-radius: 2px;
     display: flex;
-    justify-content: center;
+    justify-content: left;
     height: 35px;
 
 
-}
+}   */
 .form {
-
-
-
-
     margin: auto;
-
-
     display: flex;
     justify-content: center;
     align-items: center;
@@ -144,15 +138,6 @@ input[type="reset"]:hover {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-
-
-
-
-
-
-
-
-
 }
 
 .logincss {
@@ -163,3 +148,36 @@ input[type="reset"]:hover {
 
 
 }
+
+
+.custom-buttonSubmit {
+    margin-top: 20px;
+    margin-left: 50px;
+    cursor: pointer;
+    font-size: 15px;
+    background: #068524;
+    border: 1px solid #0b9039;
+    color: #fff;
+    padding: 10px 81px;
+    border-radius: 6px;
+    display: flex;
+    justify-content: center;
+    height: 35px;
+   
+}  
+
+.custom-buttonInvest {
+    margin-top: 20px;
+    margin-left: 50px;
+    cursor: pointer;
+    font-size: 15px;
+    background: #3577f0;
+    border: 1px solid #3577f0;
+    color: #fff;
+    padding: 10px 87px;
+    border-radius: 6px;
+    display: flex;
+    justify-content: center;
+    height: 35px;
+   
+}  

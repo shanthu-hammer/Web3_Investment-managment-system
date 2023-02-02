@@ -17,7 +17,7 @@ const UpdateStrapi = async (updateType, updateFileName) => {
 
   var raw = JSON.stringify({
     data: {
-      fileID: "fifth file ID",
+      fileID: "itracker",
       cid: updateCid ,
       name: updateFileName+".txt",
       type: updateType,

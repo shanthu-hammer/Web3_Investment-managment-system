@@ -6,14 +6,27 @@ import DropDown from "./dropdown";
 //import differenceGenerator from "../../../logic/differgenerator";
 //import ReactFileReader from "react-file-reader";
 class Manipulation extends Component {
-  //const [color, setColor] = useState("red");
+  
   constructor(props) {
     super(props);
     this.file1 = "";
     this.file2 = "";
-    //const [color, setColor] = useState("red");
+   
   }
-  // this.handleEvent = this.handleEvent.bind(this);
+ 
+//file name and cid from user
+state={
+  value:'',
+  fname:'',
+  fcid:''
+}
+getValue=(eve)=>{
+  console.log('Event: ',eve.target.value)
+
+  const fname = this.fname.value;
+  const fcid = this.fcid.value
+  this.setState({fname:fname, fcid:fcid});
+}
 
   //file from user
   showFile = async (e) => {
@@ -28,14 +41,24 @@ class Manipulation extends Component {
     };
     reader.readAsText(e.target.files[0]);
   };
+ 
+// fetchbuttontest=()=>{
+//   e.preventDefault();
+//   const value=this.state.value
+//   console.log(value+"")
+// }
+
   //file from web3
   fetchdcndata = async (e) => {
+    const fcid=this.state.fcid;
+    const fname=this.state.fname;
+    console.log(fcid,fname)
     try {
       var requestOptions = {
         method: "GET",
         redirect: "follow",
       };
-
+      var url="http://localhost:7000/filedata/"+fcid+"/"+fname;
       // let dcnfile = await fetch(
       //   "http://localhost:7000/filedata/bafybeiacs6qaawbgrwq26zzno2lpoor3nzzmjyo5b4f2ejbjfdp5n2of74/file3.json",
       //   requestOptions
@@ -45,8 +68,9 @@ class Manipulation extends Component {
       //   .catch((error) => console.log("error", error));
       // bafybeiacs6qaawbgrwq26zzno2lpoor3nzzmjyo5b4f2ejbjfdp5n2of74.ipfs.w3s
       //   .link / file3.json;
-      let dcnfile = await fetch(
-        "http://localhost:7000/filedata/bafybeiacs6qaawbgrwq26zzno2lpoor3nzzmjyo5b4f2ejbjfdp5n2of74/file3.json",
+      //oldurl    "http://localhost:7000/filedata/bafybeiacs6qaawbgrwq26zzno2lpoor3nzzmjyo5b4f2ejbjfdp5n2of74/file3.json"
+      let dcnfile = await fetch(url
+       ,
         requestOptions
       ).then((x) => x.text());
 
@@ -75,6 +99,27 @@ class Manipulation extends Component {
         <br />
         <br />
         <input type="file" onChange={(e) => this.showFile(e)} />
+       
+        <div className="input-container">
+              <label>CID </label>
+              <input
+                type="text"
+                //name="iremarks"
+                onChange={this.getValue} ref={(input)=>this.fcid=input}
+                required
+              />
+            </div>
+       
+            <div className="input-container">
+              <label>File Name  </label>
+              <input
+                type="text"
+              //  name="iremarks"
+                onChange={this.getValue} ref={(input)=>this.fname=input}
+                required
+              />
+            </div>
+
         <button
           className="custom-button"
           onClick={(e) => {
@@ -83,7 +128,7 @@ class Manipulation extends Component {
         >
           Fetch Orginal
         </button>
-        <DropDown />
+        
 
         <br />
         <br />

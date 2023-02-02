@@ -1,5 +1,7 @@
 import React from "react";
-//import "../income/income.css";
+
+import'../income/income.css';
+
 import txtfileconversion from '../../../logic/txtfileconversion'
 import UpdateStrapi from '../../../logic/updateStrapi'
 const Income = () => {
@@ -40,7 +42,7 @@ const Income = () => {
 
         <div className="form">
           <form>
-            <h1 className="logincss">Invest Data</h1>
+            <h1 className="logincss">Income Data</h1>
             <div className="input-container">
               <label className="labeltxt">Title </label>
               <input
@@ -78,16 +80,20 @@ const Income = () => {
                 required
               />
             </div>
-            <div className="button-container">
-              <input onClick= {handleSubmit
-              } type="submit" />
-            </div>
+          
             <button
-          className="custom-button"
+          className="custom-buttonSubmit"
+          onClick={handleSubmit
+          }
+        >
+          Submit
+        </button>
+            <button
+          className="custom-buttonInvest"
           onClick={fetchdcndata
           }
         >
-          Fetch Orginal
+          Push
         </button>
             
           </form>

@@ -1,5 +1,6 @@
 import React from "react";
-import "../Invest/invest.css";
+//import "../Invest/invest.css";
+import '../Invest/invest.css';
 import txtfileconversion from "../../../logic/txtfileconversion";
 import UpdateStrapi from "../../../logic/updateStrapi";
 //import "../../../logic/txtfileconversion/TxtFileConversion.js"
@@ -92,11 +93,11 @@ const Invest = () => {
                 required
               />
             </div>
-            <div className="button-container">
-              <input onClick={handleSubmit} type="submit" />
-            </div>
-            <button className="custom-button" onClick={fetchdcndata}>
-              Fetch Orginal
+            <button className="custom-buttonSubmit " onClick={handleSubmit} >
+              Submit
+            </button>
+            <button className="custom-buttonInvest" onClick={fetchdcndata}>
+              Push
             </button>
           </form>
         </div>

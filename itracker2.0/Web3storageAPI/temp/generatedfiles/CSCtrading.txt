@@ -1,0 +1,1 @@
+{"uname":"CSCtrading","idate":"2/2/2023","iamount":"100000.00","iremarks":"good investment"}
